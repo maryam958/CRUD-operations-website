@@ -49,17 +49,24 @@ export const updateUser=(req,res)=>{
 
 export const signIn=(req,res)=>{
 let{email,password}=req.body;
-qDB.execute(`select * from users where email='${email}' and password=${password}`,(err,result)=>{
+qDB.execute(`select * from users where email='${email}'`,(err,result)=>{
     
     if(err){
         res.json({mesaage:"SQL Error",err})
     }
     else{
+        console.log(result)
         if(result.length){
-            res.json({message:"Done",result});
+            if (result[0].password==password){
+                res.json({message:"Done",result});
+            }
+            else{
+                res.json({message:"password invalid"});
+            }
+           
         }
         else{
-            res.json({message:"email or password",result})
+            res.json({message:"email or password"})
         }
     }
 })

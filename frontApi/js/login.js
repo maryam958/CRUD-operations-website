@@ -20,8 +20,9 @@ console.log({data});
             localStorage.setItem('userID', result[0].id);
             window.location.replace("D:/Route Backend Diploma/Week 4/Week 4-20220915T115730Z-001/Week 4/Copy of code-front/frontApi/index.html");
         } else {
-            console.log("In-valid email or password");
+            // console.log("In-valid email or password");
             // alert("In-valid email or password")
+            alert(message)
         }
     }).catch(function (error) {
         console.log(error);
